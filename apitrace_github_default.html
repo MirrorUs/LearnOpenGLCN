@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  
+  <title>apitrace</title>
+  
+  <link rel="stylesheet" href="stylesheets/foundation.min.css">
+  <link rel="stylesheet" href="stylesheets/app.css">
+
+  <script src="javascripts/modernizr.foundation.js"></script>
+
+  <!-- IE Fix for HTML5 Tags -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="row">
+    <div class="twelve columns">
+      <section id="apitrace">
+        <a name="apitrace"></a>
+        <h2>apitrace</h2>
+        <hr />
+      </section>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="eight columns">
+      <section id="about">
+        <a name="about"></a>
+        <h3>What is apitrace?</h3>
+        <p>
+          <strong>apitrace</strong> consists of a set of tools to:
+          <ul class="disc">
+            <li>trace OpenGL, OpenGL ES, Direct3D, and DirectDraw APIs calls to a file;</li>
+            <li>replay the recorded calls from a file, on any machine and, for OpenGL and OpenGL ES, on any operating system;
+              <div>
+                <a href="images/screenshots/replay.png"><img src="images/screenshots/thumb/replay.png" /></a>
+              </div>
+            </li>
+            <li>inspect state at any call while replaying;
+              <div>
+                <a href="images/screenshots/inspect.png"><img src="images/screenshots/thumb/inspect.png" /></a>
+              </div>
+            </li>
+            <li>view framebuffers and textures;
+              <div>
+                <a href="images/screenshots/framebuffers.png"><img src="images/screenshots/thumb/framebuffers.png" /></a>
+                <a href="images/screenshots/textures.png"><img src="images/screenshots/thumb/textures.png" /></a>
+              </div>
+            </li>
+            <li>view call data;
+              <div>
+                <a href="images/screenshots/uniforms.png"><img src="images/screenshots/thumb/uniforms.png" /></a>
+                <a href="images/screenshots/vertex.png"><img src="images/screenshots/thumb/vertex.png" /></a>
+              </div>
+            </li>
+            <li>edit trace files;
+              <div>
+                <a href="images/screenshots/shader.edit.png"><img src="images/screenshots/thumb/shader.edit.png" /></a>
+                <a href="images/screenshots/call.edit.png"><img src="images/screenshots/thumb/call.edit.png" /></a>
+              </div>
+            </li>
+            <li>profile performance of traces;
+              <div>
+                <a href="images/screenshots/profile.timeline.png"><img src="images/screenshots/thumb/profile.timeline.png" /></a>
+                <a href="images/screenshots/profile.histogram.png"><img src="images/screenshots/thumb/profile.histogram.png" /></a>
+              </div>
+            </li>
+          </ul>
+        </p>
+        <p>
+          Screenshots are of <a href="http://sauerbraten.org/">Cube 2: Sauerbraten</a>
+        </p>
+      </section>
+      <hr />
+
+      <section id="features">
+        <a name="features"></a>
+        <h3>Features</h3>
+
+        <table class="features">
+          <caption>API support matrix</caption>
+          <thead>
+            <tr>
+              <th>API</th>
+              <th>Trace</th>
+              <th>Replay</th>
+              <th>Inspect</th>
+              <th>Profile</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>OpenGL 1.0 &ndash; 4.5</th>
+              <td>&#10004;</td>
+              <td>&#10004;</td>
+              <td>&#10004;</td>
+              <td>&#10004;</td>
+            </tr>
+            <tr>
+              <th>OpenGL ES 1.0 &ndash; 3.0</th>
+              <td>&#10004;</td>
+              <td>&#10004;</td>
+              <td>&#10004;</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>Direct3D 11.x</th>
+              <td>&#10004;</td>
+              <td>&#10004;</td>
+              <td>&#10003;</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>Direct3D 10.x</th>
+              <td>&#10004;</td>
+              <td>&#10004;</td>
+              <td>&#10003;</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>Direct3D 9.x</th>
+              <td>&#10004;</td>
+              <td>&#10004;</td>
+              <td>&#10003;</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>Direct3D 8</th>
+              <td>&#10004;</td>
+              <td>&#10004;</td>
+              <td>&#10003;</td>
+              <td></td>
+            </tr>
+            <tr>
+              <th>Direct3D 7</th>
+              <td>&#10004;</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            <!--
+            <tr>
+              <th>Direct2D</th>
+              <td>&#10003;</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            -->
+            <tr>
+              <th>DirectDraw</th>
+              <td>&#10004;</td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        
+        <table class="features">
+          <caption>OS support matrix</caption>
+          <thead>
+            <tr>
+              <th>OS</th>
+              <th>Trace</th>
+              <th>Replay</th>
+              <th>CLI</th>
+              <th>GUI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Linux</th>
+              <td>&#10004;</td>
+              <td>&#10004;</td>
+              <td>&#10004;</td>
+              <td>&#10004;</td>
+            </tr>
+            <tr>
+              <th>OS&nbsp;X</th>
+              <td>&#10004;</td>
+              <td>&#10004;</td>
+              <td>&#10004;</td>
+              <td>&#10004;</td>
+            </tr>
+            <tr>
+              <th>Windows</th>
+              <td>&#10004;</td>
+              <td>&#10004;</td>
+              <td>&#10004;</td>
+              <td>&#10004;</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <hr />
+
+      <section id="download">
+        <a name="download"></a>
+        <h3>Download</h3>
+
+        <p>
+          <strong>apitrace</strong> is open-source and is hosted on <a href="https://github.com/apitrace/apitrace">github</a>, and the source can be cloned via git. 
+        </p>
+
+        <div class="code panel">
+          git clone git://github.com/apitrace/apitrace.git
+        </div>
+
+        <p>
+          Binary versions of apitrace for some platforms are available <a href="http://people.freedesktop.org/~jrfonseca/apitrace/">here</a> while there are also additional packaged Windows binaries for some of the <a href="https://github.com/apitrace/apitrace/releases">tagged releases</a>.
+        </p>
+      </section>
+      <hr />
+
+      <section id="documentation">
+        <a name="documentation"></a>
+        <h3>Documentation</h3>
+
+        <ul class="disc">
+          <li><a href="https://github.com/apitrace/apitrace/blob/master/docs/USAGE.markdown">Manual</a></li>
+          <li><a href="https://github.com/apitrace/apitrace/blob/master/docs/BUGS.markdown">How to report bugs</a></li>
+          <li><a href="https://github.com/apitrace/apitrace/blob/master/docs/HACKING.markdown">Hacking the source code</a></li>
+          <li><a href="https://github.com/apitrace/apitrace/wiki">Wiki</a></li>
+          <li><a href="http://lists.freedesktop.org/mailman/listinfo/apitrace">Mailing list</a></li>
+        </ul>
+
+        <p>Miscellaneous:</p>
+        <ul class="disc">
+          <li><a href="https://www.youtube.com/watch?v=NaIhuXvg39U">Carl Worth linux.conf.au 2013 presentation on measuring/improving opengl performance with apitrace</a></li>
+          <li><a href="http://zrusin.blogspot.com/2011/04/apitrace.html">Zack Rusin's blog introducing the GUI</a></li>
+          <li><a href="http://jrfonseca.blogspot.com/2008/07/tracing-d3d-applications.html">Jose's Fonseca blog introducing the tool</a></li>
+        </ul>
+
+        <!-- WRITME
+        http://www.yousry.de/opengl-hd-recording/
+        http://txzone.net/2011/06/recording-opengl-output-to-h264-video/
+        http://en.wikibooks.org/wiki/OpenGL_Programming/Video_Capture
+        -->
+      </section>
+      <hr />
+
+      <section id="links">
+        <a name="links"></a>
+        <h3>Links</h3>
+
+        <table class="features" id="oss_tools">
+          <caption>Similar/related open-source tools</caption>
+          <thead>
+            <tr>
+              <th>Tool</th>
+              <th>APIs</th>
+              <th>OSes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th><a href="https://vulkan.lunarg.com/">vkTrace</a></th>
+              <td>Vulkan</td>
+              <td>Linux, Windows</td>
+            </tr>
+            <tr>
+              <th><a href="https://github.com/baldurk/renderdoc">RenderDoc</a></th>
+              <td>Direct3D 11-12, OpenGL 3.2+ core, OpenGL ES, Vulkan</td>
+              <td>Windows, Linux, Android</td>
+            </tr>
+            <tr>
+              <th><a href="http://code.google.com/p/glintercept/">GLIntercept</a></th>
+              <td>OpenGL</td>
+              <td>Windows</td>
+            </tr>
+            <tr>
+              <th><a href="http://benvanik.github.com/WebGL-Inspector/">WebGL-Inspector</a></th>
+              <td>WebGL</td>
+              <td>any</td>
+            </tr>
+            <tr>
+              <th><a href="https://apitrace.github.io/glsl-debugger_github_default.html">GLSL-Debugger</a></th>
+              <td>OpenGL</td>
+              <td>Windows, Linux</td>
+            </tr>
+            <tr>
+              <th><a href="http://www.opengl.org/sdk/tools/BuGLe/">BuGLe</a></th>
+              <td>OpenGL</td>
+              <td>Linux</td>
+            </tr>
+            <tr>
+              <th><a href="http://graphics.stanford.edu/%7Emdfisher/D3D9Interceptor.html">Direct3D 9 API Interceptor</a></th>
+              <td>D3D9</td>
+              <td>Windows</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="features" id="isv_tools">
+          <caption>ISV tools</caption>
+          <thead>
+            <tr>
+              <th>Vendor</th>
+              <th>Tool</th>
+              <th>APIs</th>
+              <th>OSes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Microsoft</th>
+              <th><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/visual-studio-graphics-diagnostics">Visual Studio Graphics Debugger</a></th>
+              <td>D3D9 to D3D11.1</td>
+              <td>Windows</td>
+            </tr>
+            <tr>
+              <th>Microsoft</th>
+              <th><a href="https://docs.microsoft.com/en-us/visualstudio/debugger/graphics/command-line-capture-tool">DXCap</a></th>
+              <td>D3D10 to D3D12</td>
+              <td>Windows</td>
+            </tr>
+            <tr>
+              <!-- http://blog.manbolo.com/2012/11/20/using-xcode-opengl-es-frame-capture -->
+              <th>Apple</th>
+              <th><a href="https://developer.apple.com/library/ios/documentation/3DDrawing/Conceptual/OpenGLES_ProgrammingGuide/ToolsOverview/ToolsOverview.html">Xcode GPU Tools</a></th>
+              <td>OpenGL&nbsp;ES, Metal</td>
+              <td>iOS, OS&nbsp;X</td>
+            </tr>
+            <tr>
+              <th>Apple</th>
+              <th><a href="https://developer.apple.com/library/prerelease/content/technotes/tn2178/_index.html">OpenGL Profiler</a></th>
+              <td>OpenGL</td>
+              <td>OS&nbsp;X</td>
+            </tr>
+            <tr>
+              <th>Google</th>
+              <th><a href="https://github.com/google/gapid">GAPID</a></th>
+              <td>OpenGL&nbsp;ES, Vulkan</td>
+              <td>Android</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="features" id="ihv_tools">
+          <caption>IHV tools</caption>
+          <thead>
+            <tr>
+              <th>Vendor</th>
+              <th>Tool</th>
+              <th>APIs</th>
+              <th>OSes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>NVIDIA</th>
+              <th><a href="https://developer.nvidia.com/nsight-graphics">Nsight Graphics</a></th>
+              <td>D3D11 to D3D12, OpenGL, Vulkan</td>
+              <td>Windows, Linux</td>
+            </tr>
+            <tr>
+              <th>NVIDIA</th>
+              <th><a href="https://developer.nvidia.com/tegra-graphics-debugger">Tegra Graphics Debugger</a></th>
+              <td>OpenGL, OpenGL&nbsp;ES</td>
+              <td>Android, Linux</td>
+            </tr>
+            <tr>
+              <th>AMD</th>
+              <th><a href="http://gpuopen.com/compute-product/codexl/">CodeXL</a></th>
+              <td>OpenGL, OpenCL, Vulkan</td>
+              <td>Windows, Linux</td>
+            </tr>
+            <tr>
+              <th>AMD</th>
+              <th><a href="http://gpuopen.com/archive/gpu-perfstudio/">GPU PerfStudio</a></th>
+              <td>OpenGL, D3D9 to D3D11</td>
+              <td>Windows</td>
+            </tr>
+            <tr>
+              <th>Intel</th>
+              <th><a href="http://www.intel.com/software/gpa/">Graphics Performance Analyzers</a></th>
+              <td>OpenGL, OpenGL&nbsp;ES, D3D9-11</td>
+              <td>Windows, Linux</td>
+            </tr>
+            <tr>
+              <th>Imagination</th>
+              <th><a href="http://community.imgtec.com/developers/powervr/tools/pvrtrace/">PVRTrace</a></th>
+              <td>OpenGL&nbsp;ES</td>
+              <td>Linux, Android</td>
+            </tr>
+            <tr>
+              <th>ARM</th>
+              <th><a href="https://developer.arm.com/products/software-development-tools/graphics-development-tools/mali-graphics-debugger">Mali Graphics Debugger</a></th>
+              <td>OpenGL&nbsp;ES, OpenCL, Vulkan</td>
+              <td>Linux, Android</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </section>
+    </div>
+
+    <div class="four columns">
+      <div id="nav">
+        <ul class="side-nav">
+          <li class="active"><a href="https://apitrace.github.io/apitrace_github_default.html#apitrace">apitrace</a></li>
+          <li><a href="https://apitrace.github.io/apitrace_github_default.html#about">about</a></li>
+          <li><a href="https://apitrace.github.io/apitrace_github_default.html#features">features</a></li>
+          <li><a href="https://apitrace.github.io/apitrace_github_default.html#download">download</a>
+          <li><a href="https://apitrace.github.io/apitrace_github_default.html#documentation">documentation</a>
+          <li><a href="https://github.com/apitrace/apitrace">github</a>
+          <li><a href="https://apitrace.github.io/apitrace_github_default.html#links">links</a>
+          <li class="divider"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <script src="javascripts/foundation.min.js"></script>
+  <script src="javascripts/waypoints.min.js"></script>
+  <script src="javascripts/app.js"></script>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-3224074-7']);
+    _gaq.push(['_setDomainName', 'github.com']);
+    _gaq.push(['_setAllowLinker', true]);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</body>
+</html>

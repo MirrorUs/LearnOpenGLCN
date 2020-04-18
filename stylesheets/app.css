@@ -1,0 +1,36 @@
+table.features {
+  width: 100%;
+}
+
+table.features thead tr th {
+  text-align: center;
+}
+
+table.features tbody tr th {
+  font-weight: bold;
+  text-align: left;
+  padding-left: 10px;
+}
+
+table.features tbody tr td {
+  text-align: center;
+}
+
+.sticky #nav {
+  position:fixed;
+  top: 0;
+}
+
+div.code {
+  padding: 5px 5px 5px 5px;
+  line-height: 1.2em;
+}
+
+span.code {
+  padding: 2px 2px 2px 2px;
+}
+
+ul.disc li div {
+  padding-left: 10px;
+  text-align: left;
+}

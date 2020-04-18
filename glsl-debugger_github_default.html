@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="GLSL-Debugger : A GLSL source level debugger." />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/gh-fork-ribbon.css">
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="stylesheets/gh-fork-ribbon.ie.css">
+    <![endif]-->
+    <link rel="stylesheet" href="stylesheets/stylesheet.css">
+    <title>GLSL-Debugger : A GLSL source level debugger</title>
+  </head>
+  <body>
+    <div class="github-fork-ribbon-wrapper right fixed">
+        <div class="github-fork-ribbon">
+            <a href="https://github.com/GLSL-Debugger/GLSL-Debugger">Contribute on GitHub</a>
+        </div>
+    </div>
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a class="navbar-brand" href="glsl-debugger_github_default.html#">GLSL-Debugger</a></li>
+                    <li><a href="glsl-debugger_github_default.html#features">Features</a></li>
+                    <li><a href="glsl-debugger_github_default.html#screenshots">Screenshots</a></li>
+                    <li><a href="glsl-debugger_github_default.html#source">Sources</a></li>
+                    <li><a href="glsl-debugger_github_default.html#build">Building</a></li>
+                    <li><a href="glsl-debugger_github_default.html#development">Development</a></li>
+                    <li><a href="glsl-debugger_github_default.html#contact">Contact</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+    <!-- HEADER -->
+    <div class="jumbotron">
+        <div class="container">
+            <div id="header_wrap" class="outer">
+                <header class="inner">
+                    <h1 id="project_title">GLSL-Debugger</h1>
+                    <h2 id="project_tagline">GLSL source level debugger</h2>
+                </header>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <p>GLSL-Debugger is a tool for debugging OpenGL programs, featuring as
+        simple OpenGL tracing as GLSL line-by-line debugging.
+        By transparently instrumenting the host application it allows for debugging
+        GLSL shaders in arbitrary OpenGL programs without the need to recompile or
+        even having the source code of the host program available. The debug data
+        is directly retrieved from the hardware pipeline and can be used for visual
+        debugging and program analysis.</p>
+        <p>GLSL-Debugger is the Open Source fork of the project originally known
+        as <a href="http://www.vis.uni-stuttgart.de/glsldevil/">glslDevil</a>, by
+        Thomas Klein, Magnus Strengert and Thomas Ertl.</p>
+    </div>
+    <a name="features"></a>
+    <div class="container">
+        <h2>Key Features:</h2>
+        <p>Please note the development status below and the long-term goals as
+        some of the features are under development</p>
+        <ul>
+            <li>Tracing OpenGL programs.</li>
+            <li>Visual GLSL step-by-step debugging.</li>
+            <li>Support for linux and windows platforms.</li>
+            <li>Record and playback OpenGL traces.</li>
+        </ul>
+    </div>
+    <a name="screenshots"></a>
+    <div class="container">
+        <h2>Screenshots:</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <a href="images/screen1.png"><img src="images/screen1_thumb.png" alt="Screenshot01"></a>
+            </div>
+            <div class="col-md-6">
+                <a href="images/screen2.png"><img src="images/screen2_thumb.png" alt="Screenshot02"></a>
+           </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6">
+           </div>
+        </div>
+    </div>
+    <a name="source"></a>
+    <div class="container">
+        <h2>Source Code:</h2>
+        <p>Currently, we only provide source code for downloading. In the future
+        we might be able to provide ready-to-use binaries. Please follow the
+        <a href="http://glsl-debugger.github.io/glsl-debugger_github_default.html#installation">building guide</a> to compile the source code yourself.</p>
+        <section id="source">
+            <a href="https://github.com/GLSL-Debugger/GLSL-Debugger/zipball/master"
+               class="btn btn-lg btn-primary">
+                <span class="glyphicon glyphicon-save"></span>
+                Download .zip
+            </a>
+            <a href="https://github.com/GLSL-Debugger/GLSL-Debugger/tarball/master"
+               class="btn btn-lg btn-primary">
+                <span class="glyphicon glyphicon-save"></span>
+                Download tar.gz
+            </a>
+        </section>
+    </div>
+    <a name="build"></a>
+    <div class="container">
+        <h2>Building:</h2>
+        <p>GLSL-Debugger uses <a href="http://cmake.org">CMake</a> as build system. CMake can generate 
+        project files for various platforms and tool chains. Take a look at the
+        output of <code>cmake -h</code>.</p>
+        <h4>Build requirements:</h4>
+        <ul>
+            <li>flex &amp; bison (version 3 recommended)<br />
+            For windows builds <a href="http://sourceforge.net/projects/winflexbison/">winflexbison</a>
+            has been reported to work and hence, is recommended. Flex and bison
+            from MinGW haven't been tested but they might work aswell.</li>
+            <li><a href="http://qt-project.org">Qt4 framework</a></li>
+            <li>GLUT <br />
+            For windows builds:
+                <a href="http://www.transmissionzero.co.uk/software/freeglut-devel/">freeglut</a>, has been tested and work fine.
+                <a href="http://user.xmission.com/%7Enate/glut.html">Win32 port of GLUT</a>, hasn't been tested.
+            <li><a href="https://github.com/SirAnthony/mhook">Mhook</a>
+            is required for <strong>windows build only</strong>. It has been added as
+                submodule to the GLSL-Debugger repository. Use <code>git submodule update --init --recursive</code> if you can't find
+                it in your working directory. <br />
+            </li>
+        </ul>
+        <h4>Build procedure:</h4>
+        <p>CMake can handle out-of-source builds (OOS) and this is the recommended way
+        to build GLSL-Debugger. Nevertheless, in-source builds are working as
+        well if you are more comfortable with them. Assuming you've navigated to
+        the project directory, the neccessary steps for building OOS on **nix
+        &amp; friends are:
+            <pre><code>mkdir ../build &amp;&amp; cd ../build
+cmake ../GLSL-Debugger
+make</code></pre>
+        </p>
+        <p>CMake can generate project files for numerous tool chains. On
+        windows, you can generate Visual Studio projects by selecting the
+        appropriate generator, e.g. <code>cmake -G "Visual Studio 9
+        2008"</code>. Please check the cmake
+documentation for detailed information. OSX is currently not supported but
+compiling the source code should work.</p>
+    </div>
+    <a name="development"></a>
+    <div class="container">
+        <h2>Development</h2>
+        <p>Development currently aims at fixing blocking bugs, reviving once
+        working functionality and testing the debugger to work properly. Hence,
+        the code base undergoes rather big modifications and you should expect
+        to see bugs, dead code, planned but never implemented features and all
+        other kinds of things typically seen on construction sites.</p>
+        <h3>Long-term goals</h3>
+        <ul>
+            <li>Rework the interaction between the debugger and the debug
+            library with a more flexible and more portable protocol.</li>
+            <li>Rewrite the debug library to support remote debugging.</li>
+            <li>Support OSX.</li>
+            <li>Support OpenGL contexts for newer versions of OpenGL.</li>
+        </ul>
+
+        <p>We are looking for people who have an interest in this tool's
+        capabilities and which like to bring this project back to life and push
+        it forward. Get in touch with us, check out the code, experiment with it, fix some things and push some changes!</p>
+    </div>
+    <a name="contact"></a>
+    <div class="container">
+        <h2>Contact</h2>
+        <p>Development mailing list: <a href="mailto:glsl-debugger-development@googlegroups.com">glsl-debugger-development@googlegroups.com</a><br />
+        Discussion at google groups: <a href="https://groups.google.com/forum/?fromgroups#!forum/glsl-debugger-development">glsl-debugger-development</a><br />
+        IRC: <a href="irc://chat.freenode.net#glsl-debugger">#glsl-debugger</a> on <a href="http://webchat.freenode.net/">irc.freenode.net</a>
+        </p>
+    </div>
+  </body>
+</html>
